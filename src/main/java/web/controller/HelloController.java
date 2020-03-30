@@ -24,22 +24,7 @@ public class HelloController {
         return "hello";
     }
 
-    @RequestMapping(value = "cars", method = RequestMethod.GET)
-    public String printCars(@RequestParam(name = "locale", required = false, defaultValue = "en") String locale, ModelMap model) {
-        CarService carService = new CarService();
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(new Long(1), "model1", "brand1"));
-        cars.add(new Car(new Long(2), "model2", "brand2"));
-        cars.add(new Car(new Long(3), "model3", "brand3"));
-        carService.setListCars(cars);
-        if (locale.equals("ru")) {
-            model.addAttribute("locale", "МАШИНЫ");
-        } else {
-            model.addAttribute("locale", "CARS");
-        }
-        model.addAttribute("messagesCars", carService.getListCars());
-        return "cars";
-    }
+
 
 }
 
